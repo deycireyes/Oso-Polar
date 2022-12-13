@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deyci - Calculadora</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" >
+    <style>
+        body{
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h1></h1>
+
+        <div class="col-3">
+
+            <div class="mt-1">
+                <input type="text" id="resultado">
+            </div>
+
+            <div class="mt-1">
+                <button class="btn btn-dark" onclick="jboton(1)">1</button>
+                <button class="btn btn-dark" onclick="jboton(2)">2</button>
+                <button class="btn btn-dark" onclick="jboton(3)">3</button>
+                <button class="btn btn-success" onclick="jsuma()">+</button>
+                <button class="btn btn-danger" onclick="jHola()">saludo</button>
+            </div>
+
+            <div class="mt-1">
+                <button class="btn btn-dark" onclick="jboton(4)">4</button>
+                <button class="btn btn-dark" onclick="jboton(5)">5</button>
+                <button class="btn btn-dark" onclick="jboton(6)">6</button>
+                <button class="btn btn-success" onclick="jresta()">-</button>
+            </div>
+
+            <div class="mt-1">
+                <button class="btn btn-dark" onclick="jboton(7)">7</button>
+                <button class="btn btn-dark" onclick="jboton(8)">8</button>
+                <button class="btn btn-dark" onclick="jboton(9)">9</button>
+                <button class="btn btn-success" onclick="jmult()">*</button>
+            </div>
+
+            <div class="mt-1">
+                <button class="btn btn-dark" onclick="jboton(0)">0</button>            
+                <button class="btn btn-success" onclick="jdiv()">/</button>
+                <button class="btn btn-danger" onclick="jborrar()">C</button>
+                <button class="btn btn-success" onclick="jigual()">=</button>
+           </div>
+
+           <div class="mt-1">
+                <button class="btn btn-danger" onclick="jpot()">^</button>            
+                <button class="btn btn-success" onclick="jraiz()">√</button>
+                <button class="btn btn-dark" onclick="jcos()">Cosφ</button>
+                <button class="btn btn-dark" onclick="jtan()">tan B</button>
+                
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+
+    <script>
+
+        var num = "";
+        var val1 = "";
+        var oper = 0;
+        raizC=parseInt (1);
+
+        function jigual(){
+            if(oper == 1){
+                tmp = parseInt (val1) + parseInt(num);
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+            if(oper == 2){
+                tmp = parseInt (val1) - parseInt(num);
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+            if(oper == 3){
+                tmp = parseInt (val1) * parseInt(num);
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+            if(oper == 4){
+                tmp = parseInt (val1) / parseInt(num);
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+            if(oper == 5){
+                tmp = val1;
+                while (num > 1){
+                    tmp = parseInt (tmp) * parseInt (val1);
+                    num = parseInt (num) - 1;
+                }
+                $("#resultado").val(tmp);
+                num = tmp;
+            }
+            oper = 0;
+        }
+
+        function jsuma(){
+            val1 = num;
+            oper = 1;
+            jborrar();
+        }
+
+        function jresta(){
+            val1 = num;
+            oper = 2;
+            jborrar();
+        }
+
+        function jmult(){
+            val1 = num;
+            oper = 3;
+            jborrar();
+        }
+
+        function jdiv(){
+            val1 = num;
+            oper = 4;
+            jborrar();
+        }
+
+        function jpot(){
+            val1 = num;
+            oper = 5;
+            jborrar();
+        }
+
+        function jraiz(){
+            val1 = num;
+            oper = 7;
+            tmp = Math.sqrt(num);
+            $("#resultado").val(tmp);
+            num = tmp;
+        }
+
+        function jcos(){
+            val1 = num;
+            oper = 7;
+            tmp = Math.cos(num);
+            $("#resultado").val(tmp);
+            num=tmp;
+        }
+
+        function jtan(){
+            val1 = num;
+            oper = 8;
+            tmp = Math.atan(num);
+            $("#resultado").val(tmp);
+            num = tmp;
+        }
+
+        function jHola(){
+            val1 = num;
+            oper = 9;
+            tmp = "Deyci Reyes"
+            $("#resultado").val(tmp);
+            num = tmp;
+        }
+
+
+        function jboton(valor){
+            num = num + valor;
+            $("#resultado").val(num);
+        }
+
+        function jborrar (){
+            $("#resultado").val("");
+            num = "";
+        }
+    </script>
+    
+  </body>
+</html>
